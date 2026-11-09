@@ -1,0 +1,1393 @@
+{
+  "created_at": "2026-11-08T16:37:13.383863+00:00",
+  "total_tasks": 10,
+  "exact_passes": 2,
+  "accepted_path_passes": 5,
+  "attribution_counts": {
+    "AGENT_ERROR": 4,
+    "EVALUATOR_MISMATCH": 3,
+    "PASS": 2,
+    "TOOL_FAILURE": 1
+  },
+  "runs": [
+    {
+      "task_id": "exact_success",
+      "run_id": "87581fd8c94a4b21bbc6171dcab8f457",
+      "final_answer": "Found document D101: Project Brief.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ],
+          "timestamp": "2026-11-08T16:37:12.927808+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": true,
+        "evidence": [
+          "Observed calls exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": true,
+        "evidence": [
+          "Observed calls match accepted path 1.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "attribution": "PASS",
+      "attribution_evidence": [
+        "Both evaluators accepted the run."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "valid_alternative",
+      "run_id": "59a26d4297144b69ab53c4681341a31b",
+      "final_answer": "Found document D102: Evaluation Notes.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "search_documents",
+          "arguments": {
+            "query": "D102"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D102\",\n  \"title\": \"Evaluation Notes\",\n  \"body\": \"Accepted valid tool paths should pass even when their order differs.\"\n}",
+            "{\"result\": [{\"body\": \"Accepted valid tool paths should pass even when their order differs.\", \"document_id\": \"D102\", \"title\": \"Evaluation Notes\"}]}"
+          ],
+          "timestamp": "2026-11-08T16:37:12.950737+00:00"
+        },
+        {
+          "step": 2,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D102"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D102\",\n  \"title\": \"Evaluation Notes\",\n  \"body\": \"Accepted valid tool paths should pass even when their order differs.\"\n}",
+            "{\"body\": \"Accepted valid tool paths should pass even when their order differs.\", \"document_id\": \"D102\", \"title\": \"Evaluation Notes\"}"
+          ],
+          "timestamp": "2026-11-08T16:37:12.956345+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D102"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D102\",\n  \"title\": \"Evaluation Notes\",\n  \"body\": \"Accepted valid tool paths should pass even when their order differs.\"\n}",
+            "{\"body\": \"Accepted valid tool paths should pass even when their order differs.\", \"document_id\": \"D102\", \"title\": \"Evaluation Notes\"}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls do not exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": true,
+        "evidence": [
+          "Observed calls match accepted path 2.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "attribution": "EVALUATOR_MISMATCH",
+      "attribution_evidence": [
+        "The accepted-path evaluator passed, while exact matching rejected the run.",
+        "Observed calls do not exactly match the reference path.",
+        "Final answer contains the expected text.",
+        "Tool outputs contain all required evidence."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "independent_reorder",
+      "run_id": "3bc32009974745fe92fbe028ba03d8cb",
+      "final_answer": "Found documents D103 and D101.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D103"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D103\",\n  \"title\": \"Runbook\",\n  \"body\": \"Store each run as a replayable structured trace.\"\n}",
+            "{\"body\": \"Store each run as a replayable structured trace.\", \"document_id\": \"D103\", \"title\": \"Runbook\"}"
+          ],
+          "timestamp": "2026-11-08T16:37:12.978106+00:00"
+        },
+        {
+          "step": 2,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ],
+          "timestamp": "2026-11-08T16:37:12.984793+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ]
+        },
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D103"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D103\",\n  \"title\": \"Runbook\",\n  \"body\": \"Store each run as a replayable structured trace.\"\n}",
+            "{\"body\": \"Store each run as a replayable structured trace.\", \"document_id\": \"D103\", \"title\": \"Runbook\"}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls do not exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": true,
+        "evidence": [
+          "Observed calls match accepted path 1.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "attribution": "EVALUATOR_MISMATCH",
+      "attribution_evidence": [
+        "The accepted-path evaluator passed, while exact matching rejected the run.",
+        "Observed calls do not exactly match the reference path.",
+        "Final answer contains the expected text.",
+        "Tool outputs contain all required evidence."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "agent_error",
+      "run_id": "63e17769f2874c209dd5671701fa31d4",
+      "final_answer": "I could not find the requested document.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "search_documents",
+          "arguments": {
+            "query": "nonexistent phrase"
+          },
+          "is_error": false,
+          "response": [
+            "{\"result\": []}"
+          ],
+          "timestamp": "2026-11-08T16:37:13.010475+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D103"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D103\",\n  \"title\": \"Runbook\",\n  \"body\": \"Store each run as a replayable structured trace.\"\n}",
+            "{\"body\": \"Store each run as a replayable structured trace.\", \"document_id\": \"D103\", \"title\": \"Runbook\"}"
+          ]
+        },
+        {
+          "tool": "search_documents",
+          "arguments": {
+            "query": "D103"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D103\",\n  \"title\": \"Runbook\",\n  \"body\": \"Store each run as a replayable structured trace.\"\n}",
+            "{\"result\": [{\"body\": \"Store each run as a replayable structured trace.\", \"document_id\": \"D103\", \"title\": \"Runbook\"}]}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls do not exactly match the reference path.",
+          "Final answer does not contain the expected text.",
+          "Tool outputs are missing required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": false,
+        "evidence": [
+          "Observed calls match none of the task's accepted paths.",
+          "Final answer does not contain the expected text.",
+          "Tool outputs are missing required evidence."
+        ]
+      },
+      "attribution": "AGENT_ERROR",
+      "attribution_evidence": [
+        "All configured isolated tool checks passed.",
+        "Observed calls match none of the task's accepted paths.",
+        "Final answer does not contain the expected text.",
+        "Tool outputs are missing required evidence."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "seeded_tool_failure",
+      "run_id": "f2013db0fb5d42a0abd2edc549e5b005",
+      "final_answer": "The retrieval of D999 failed.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D999"
+          },
+          "is_error": true,
+          "response": [
+            "Error executing tool get_document: Seeded tool failure for document D999"
+          ],
+          "timestamp": "2026-11-08T16:37:13.021415+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D999"
+          },
+          "expected_error": false,
+          "observed_error": true,
+          "passed": false,
+          "response": [
+            "Error executing tool get_document: Seeded tool failure for document D999"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls do not exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs are missing required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": false,
+        "evidence": [
+          "At least one observed tool call returned an error.",
+          "Observed calls match none of the task's accepted paths.",
+          "Final answer contains the expected text.",
+          "Tool outputs are missing required evidence."
+        ]
+      },
+      "attribution": "TOOL_FAILURE",
+      "attribution_evidence": [
+        "Isolated check for get_document with {'document_id': 'D999'} expected error=False, observed error=True."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "search_only_success",
+      "run_id": "be0517804ba54cf684501f2463999dbc",
+      "final_answer": "Search found document D102: Evaluation Notes.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "search_documents",
+          "arguments": {
+            "query": "D102"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D102\",\n  \"title\": \"Evaluation Notes\",\n  \"body\": \"Accepted valid tool paths should pass even when their order differs.\"\n}",
+            "{\"result\": [{\"body\": \"Accepted valid tool paths should pass even when their order differs.\", \"document_id\": \"D102\", \"title\": \"Evaluation Notes\"}]}"
+          ],
+          "timestamp": "2026-11-08T16:37:13.041860+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "search_documents",
+          "arguments": {
+            "query": "D102"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D102\",\n  \"title\": \"Evaluation Notes\",\n  \"body\": \"Accepted valid tool paths should pass even when their order differs.\"\n}",
+            "{\"result\": [{\"body\": \"Accepted valid tool paths should pass even when their order differs.\", \"document_id\": \"D102\", \"title\": \"Evaluation Notes\"}]}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls do not exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": true,
+        "evidence": [
+          "Observed calls match accepted path 2.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "attribution": "EVALUATOR_MISMATCH",
+      "attribution_evidence": [
+        "The accepted-path evaluator passed, while exact matching rejected the run.",
+        "Observed calls do not exactly match the reference path.",
+        "Final answer contains the expected text.",
+        "Tool outputs contain all required evidence."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "unsupported_final_answer",
+      "run_id": "a6bf4cac40eb4d2ea14b556fdf30d0b5",
+      "final_answer": "Found document D102: Evaluation Notes.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ],
+          "timestamp": "2026-11-08T16:37:13.057710+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls exactly match the reference path.",
+          "Final answer does not contain the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": false,
+        "evidence": [
+          "Observed calls match accepted path 1.",
+          "Final answer does not contain the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "attribution": "AGENT_ERROR",
+      "attribution_evidence": [
+        "All configured isolated tool checks passed.",
+        "Observed calls match accepted path 1.",
+        "Final answer does not contain the expected text.",
+        "Tool outputs contain all required evidence."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "invalid_document_argument",
+      "run_id": "d80cb991533c4d95a4d4be9f40e20178",
+      "final_answer": "Found document D101.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D404"
+          },
+          "is_error": true,
+          "response": [
+            "Error executing tool get_document: Unknown document identifier: D404"
+          ],
+          "timestamp": "2026-11-08T16:37:13.073703+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls do not exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs are missing required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": false,
+        "evidence": [
+          "At least one observed tool call returned an error.",
+          "Observed calls match none of the task's accepted paths.",
+          "Final answer contains the expected text.",
+          "Tool outputs are missing required evidence."
+        ]
+      },
+      "attribution": "AGENT_ERROR",
+      "attribution_evidence": [
+        "All configured isolated tool checks passed.",
+        "At least one observed tool call returned an error.",
+        "Observed calls match none of the task's accepted paths.",
+        "Final answer contains the expected text.",
+        "Tool outputs are missing required evidence."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "unexpected_extra_call",
+      "run_id": "77e026e434b146d388dea0750a89813f",
+      "final_answer": "Found document D101: Project Brief.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ],
+          "timestamp": "2026-11-08T16:37:13.098744+00:00"
+        },
+        {
+          "step": 2,
+          "tool": "search_documents",
+          "arguments": {
+            "query": "nothing matches this"
+          },
+          "is_error": false,
+          "response": [
+            "{\"result\": []}"
+          ],
+          "timestamp": "2026-11-08T16:37:13.107028+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ]
+        },
+        {
+          "tool": "search_documents",
+          "arguments": {
+            "query": "D101"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"result\": [{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}]}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": false,
+        "evidence": [
+          "Observed calls do not exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": false,
+        "evidence": [
+          "Observed calls match none of the task's accepted paths.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "attribution": "AGENT_ERROR",
+      "attribution_evidence": [
+        "All configured isolated tool checks passed.",
+        "Observed calls match none of the task's accepted paths.",
+        "Final answer contains the expected text.",
+        "Tool outputs contain all required evidence."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    },
+    {
+      "task_id": "invalid_identifier_rejected",
+      "run_id": "b1137999db3041c588de70dee2450429",
+      "final_answer": "Retrieved D101; the unknown identifier was also rejected.",
+      "events": [
+        {
+          "step": 1,
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "is_error": false,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ],
+          "timestamp": "2026-11-08T16:37:13.126023+00:00"
+        }
+      ],
+      "tool_checks": [
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D404"
+          },
+          "expected_error": true,
+          "observed_error": true,
+          "passed": true,
+          "response": [
+            "Error executing tool get_document: Unknown document identifier: D404"
+          ]
+        },
+        {
+          "tool": "get_document",
+          "arguments": {
+            "document_id": "D101"
+          },
+          "expected_error": false,
+          "observed_error": false,
+          "passed": true,
+          "response": [
+            "{\n  \"document_id\": \"D101\",\n  \"title\": \"Project Brief\",\n  \"body\": \"The project tests reliable MCP tool interactions.\"\n}",
+            "{\"body\": \"The project tests reliable MCP tool interactions.\", \"document_id\": \"D101\", \"title\": \"Project Brief\"}"
+          ]
+        }
+      ],
+      "exact": {
+        "passed": true,
+        "evidence": [
+          "Observed calls exactly match the reference path.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "accepted_path": {
+        "passed": true,
+        "evidence": [
+          "Observed calls match accepted path 1.",
+          "Final answer contains the expected text.",
+          "Tool outputs contain all required evidence."
+        ]
+      },
+      "attribution": "PASS",
+      "attribution_evidence": [
+        "Both evaluators accepted the run."
+      ],
+      "available_tools": [
+        {
+          "name": "get_document",
+          "title": null,
+          "description": "Retrieve a document by its exact identifier.",
+          "inputSchema": {
+            "properties": {
+              "document_id": {
+                "title": "Document Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "document_id"
+            ],
+            "title": "get_documentArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "title": "get_documentDictOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        },
+        {
+          "name": "search_documents",
+          "title": null,
+          "description": "Find documents whose title or body contains the query.",
+          "inputSchema": {
+            "properties": {
+              "query": {
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "query"
+            ],
+            "title": "search_documentsArguments",
+            "type": "object"
+          },
+          "outputSchema": {
+            "properties": {
+              "result": {
+                "items": {
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "type": "object"
+                },
+                "title": "Result",
+                "type": "array"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "title": "search_documentsOutput",
+            "type": "object"
+          },
+          "icons": null,
+          "annotations": null,
+          "_meta": null,
+          "execution": null
+        }
+      ]
+    }
+  ]
+}
